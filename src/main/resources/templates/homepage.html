@@ -5,20 +5,22 @@
     <title>Home Page</title>
     <th:block th:insert="base :: header"></th:block>
 </head>
+
 <body>
+<div>
 
 <div th:replace="base :: nav"></div>
-
 <div class="container">
     <div class="text-center">
         <br/>
         <br/>
-        <h1>
+        <h1 class="text-white">
             Welcome to Code Work Academy Messaging App!
         </h1>
     </div>
     <br/>
     <br/>
+
     <div class="jumbotron text-center">
         <div class="text-center">
             <h3> List of Messages </h3>
@@ -35,46 +37,49 @@
                 <td th:text="${message.content}"></td>
                 <td th:text="${message.sender}"></td>
                 <td th:text="${message.date}"></td>
-            <td>
+
+
                 <div sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
-                    <a th:href="@{/detail/{id}(id=${message.id})}" class="btn btn-outline-success"> <strong>Details</strong> </a>
+                    <td>
+                    <a th:href="@{/detail/{id}(id=${message.id})}" class="btn btn-outline-success" role="button"> <strong>Details</strong> </a>
+                    </td>
                 </div>
+
                 <div sec:authorize="hasAuthority('ADMIN')">
+                    <td>
                     <a th:href="@{/delete/{id}(id=${message.id})}" class="btn btn-danger" role="button">
                         <strong>Delete</strong> </a>
+                    </td>
                 </div>
+
             </tr>
-            </td>
+
         </table>
 
         <br/>
         <br/>
 
-        <div class="text-center">
+        <div class="aligntext-center">
             <td>
-
-                <a href="/login" class="btn btn-success" role="button"> <strong>Login</strong> </a>
-
-                <li class="nav-item">
-                    <a sec:authorize="!isAuthenticated()" class="nav-link " href="/login">Login</a>
-                </li>
-
-
-                <a href="/register" class="btn btn-success" role="button"><strong>Register</strong></a>
-                <div sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
+                <span sec:authorize="!isAuthenticated()" class="nav-link  text-warning ">
+                    <a href="/login" class="btn btn-success" role="button"><strong>Login</strong></a>
+                    <a href="/register" class="btn btn-success" role="button" > <strong>Register</strong></a>
+                </span>
+            </td>
+            <td>
+                <span sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
                     <a href="/addMessage" class="btn btn-success" role="button">Add Message</a>
-                </div>
-                <div sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
                     <a href="/logout" class="btn btn-success" role="button">Log out</a>
-                </div>
+                </span>
 
             </td>
+
         </div>
 
     </div>
 </div>
 
 <div th:replace="base ::  footer"></div>
-
+</div>
 </body>
 </html>
