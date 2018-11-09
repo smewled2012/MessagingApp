@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<
 <head>
-    <title>Home Page</title>
+    <title>Welcome to MessaginApp</title>
     <th:block th:insert="base :: header"></th:block>
 </head>
 
 <body>
-<div>
 
 <div th:replace="base :: nav"></div>
+
 <div class="container">
     <div class="text-center">
         <br/>
@@ -41,7 +40,7 @@
 
                 <div sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
                     <td>
-                    <a th:href="@{/detail/{id}(id=${message.id})}" class="btn btn-outline-success" role="button"> <strong>Details</strong> </a>
+                  <button><a th:href="@{/detail/{id}(id=${message.id})}" class="btn btn-outline-success" role="button"> <strong>Details</strong> </a></button>
                     </td>
                 </div>
 
@@ -62,14 +61,14 @@
         <div class="aligntext-center">
             <td>
                 <span sec:authorize="!isAuthenticated()" class="nav-link  text-warning ">
-                    <a href="/login" class="btn btn-success" role="button"><strong>Login</strong></a>
-                    <a href="/register" class="btn btn-success" role="button" > <strong>Register</strong></a>
+                    <a href="/login"  class="btn btn-outline-success text-color" role="button"><strong>Login</strong></a>
+                    <a href="/register"  class="btn btn-outline-success text-color" role="button" > <strong>Register</strong></a>
                 </span>
             </td>
             <td>
                 <span sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
-                    <a href="/addMessage" class="btn btn-success" role="button">Add Message</a>
-                    <a href="/logout" class="btn btn-success" role="button">Log out</a>
+                    <a href="/addMessage"  class="btn btn-success " role="button"><strong>Add Message</strong></a>
+                    <a href="/logout" class="btn btn-outline-success  text-color" role="button"><strong>Log out</strong></a>
                 </span>
 
             </td>
@@ -79,7 +78,9 @@
     </div>
 </div>
 
+
+
 <div th:replace="base ::  footer"></div>
-</div>
+
 </body>
 </html>

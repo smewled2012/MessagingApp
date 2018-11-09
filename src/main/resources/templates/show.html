@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Detail Information </title>
+
     <th:block th:insert="base :: header"></th:block>
 </head>
 
@@ -15,7 +16,7 @@
 
     <div class="my-4 py-5" align="center">
 
-        <h2 class="text-center py-3">Message Details</h2>
+        <h2 class="text-center py-3">Message Detail</h2>
 
         <table>
             <tr class="text-dark">
@@ -33,10 +34,8 @@
         <br />
 
         <td>
-        <button class="btn btn-color"><a class="text-white" href="/">View All
-            Messages</a></button>
-        <button class="btn btn-color"><a class="text-white" th:href="@{/update/{id}(id=${message.id})}"> Update Post </a></button>
-
+            <button class="btn btn-outline-success text-white" role="button"><a href="/"><strong>View All Messages</strong></a></button>
+            <button class="btn btn-outline-success text-white" role="link"><a  th:href="@{/update/{id}(id=${message.id})}"> <strong>Edit Post </strong></a></button>
         </td>
 
     </div>
