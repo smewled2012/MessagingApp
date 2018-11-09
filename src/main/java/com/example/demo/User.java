@@ -4,9 +4,7 @@ package com.example.demo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="User_Data")
@@ -40,11 +38,12 @@ public class User {
             inverseJoinColumns = @JoinColumn(name="role_id"))
   private Collection<Role> roles;
 
-  @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-  private Set<Messaging> messages;
+
+  @OneToMany 
+  private List<Messaging> messages;
 
   public User() {
-    messages=new HashSet<>();
+    messages=new ArrayList<>();
   }
 
   public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
@@ -121,12 +120,11 @@ public class User {
     this.roles = roles;
   }
 
-  public Set<Messaging> getMessages() {
+  public List<Messaging> getMessages() {
     return messages;
   }
 
-  public void setMessages(Set<Messaging> messages) {
+  public void setMessages(List<Messaging> messages) {
     this.messages = messages;
   }
-
 }

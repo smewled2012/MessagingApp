@@ -1,7 +1,8 @@
 package com.example.demo;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Messaging {
@@ -10,14 +11,16 @@ public class Messaging {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
     private String content;
 
+    @NotNull
     private String sender;
 
+    @NotNull
     private String date;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @ManyToOne
     private User user;
 
     public Messaging() {
