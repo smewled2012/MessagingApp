@@ -70,13 +70,12 @@ public class MainController {
 
     //save the message
     @PostMapping("/addMessage")
-    public String processForm(@Valid @ModelAttribute("message") Messaging message,@AuthenticationPrincipal User user,BindingResult result ){
+    public String processForm(@Valid @ModelAttribute("message") Messaging message,BindingResult result ){
 
         if(result.hasErrors()){
             return "messageform";
         }
 
-        message.setUser(user);
         messagingRepository.save(message);
 
         return "redirect:/";
