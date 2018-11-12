@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,13 +69,13 @@ public class MainController {
 
     //save the message
     @PostMapping("/addMessage")
-    public String processForm(@Valid @ModelAttribute("message") Messaging message, BindingResult result ){
+    public String processForm(@Valid @ModelAttribute("message") Messaging message,@AuthenticationPrincipal User user,BindingResult result ){
 
         if(result.hasErrors()){
             return "messageform";
         }
 
-      //  message.setUser(me);
+        message.setUser(user);
         messagingRepository.save(message);
 
         return "redirect:/";
