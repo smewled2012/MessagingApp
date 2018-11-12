@@ -63,6 +63,7 @@ public class MainController {
         model.addAttribute("message", new Messaging());
         model.addAttribute("messages", messagingRepository.findAll());
 
+
         return "messageform";
 
     }
@@ -86,6 +87,9 @@ public class MainController {
     public String showCourse(@PathVariable("id") long id, Model model){
 
         model.addAttribute("message",messagingRepository.findById(id).get());
+        if(userService.getUser()!=null){
+            model.addAttribute("user_id",userService.getUser().getId());
+        }
         return "show";
     }
 
