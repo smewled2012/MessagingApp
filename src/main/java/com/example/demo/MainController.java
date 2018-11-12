@@ -96,6 +96,9 @@ public class MainController {
     @RequestMapping("/update/{id}")
     public String updateCourse(@PathVariable("id") long id, Model model){
 
+        if(userService.getUser()!=null){
+            model.addAttribute("user_id",userService.getUser().getId());
+        }
         model.addAttribute("message",messagingRepository.findById(id));
         model.addAttribute("user",userRepository.findById(id));
         return  "messageform";
