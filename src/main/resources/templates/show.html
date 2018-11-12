@@ -35,9 +35,10 @@
 
         <td>
             <button class="btn btn-outline-success text-white" role="button"><a href="/"><strong>View All Messages</strong></a></button>
-            <span th:if="${user_id==message.user.id}">
+
+            <div th:if="${user_id==message.user.id}">
                 <button class="btn btn-outline-success text-white" role="button"><a  th:href="@{/update/{id}(id=${message.id})}"> <strong>Edit Post </strong></a></button>
-            </span>
+            </div>
 
         </td>
     </div>

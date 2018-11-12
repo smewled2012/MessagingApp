@@ -39,7 +39,7 @@ public class User {
   private Collection<Role> roles;
 
 
-  @OneToMany 
+ @OneToMany
   private List<Messaging> messages;
 
   public User() {

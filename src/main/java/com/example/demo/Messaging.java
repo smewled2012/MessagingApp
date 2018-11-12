@@ -20,7 +20,9 @@ public class Messaging {
     @NotNull
     private String date;
 
-    @ManyToOne
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Messaging() {
