@@ -14,7 +14,7 @@ the name of the sender and the date of the the message sent. To add a message a 
  - HTML
  - Bootstrap
 
-#Demonstration of the project 
+# Demonstration of the project 
 
 You can find the link below on heroku to see the full demonstration of the project.
 
