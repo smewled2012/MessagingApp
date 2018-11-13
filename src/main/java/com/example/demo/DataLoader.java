@@ -28,6 +28,7 @@ public class DataLoader implements CommandLineRunner {
 
       boolean rundataloader = false;
 
+
       if (rundataloader) {
           roleRepository.save(new Role("USER"));
           roleRepository.save(new Role("ADMIN"));
@@ -47,9 +48,6 @@ public class DataLoader implements CommandLineRunner {
           user.setRoles(Arrays.asList(adminRole));
           userRepository.save(user);
 
-    /*Messaging message= new Messaging("This is the first message ", "semee", "10-12-2018");
-    messagingRepository.save(message);
-*/
       }
   }
 
