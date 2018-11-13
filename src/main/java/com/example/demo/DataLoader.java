@@ -26,7 +26,7 @@ public class DataLoader implements CommandLineRunner {
   @Override
   public void run(String... strings) throws Exception {
 
-      boolean rundataloader = true;
+      boolean rundataloader = false;
 
       if (rundataloader) {
           roleRepository.save(new Role("USER"));
