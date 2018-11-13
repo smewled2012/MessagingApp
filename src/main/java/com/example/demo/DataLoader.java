@@ -24,28 +24,33 @@ public class DataLoader implements CommandLineRunner {
   private PasswordEncoder passwordEncoder;
 
   @Override
-  public void run(String... strings) throws Exception{
-    roleRepository.save(new Role("USER"));
-    roleRepository.save(new Role("ADMIN"));
+  public void run(String... strings) throws Exception {
 
-    Role adminRole = roleRepository.findByRole("ADMIN");
-    Role userRole = roleRepository.findByRole("USER");
+      boolean rundataloader = true;
 
-    User user = new User("jim@jim.com", passwordEncoder.encode("password"), "Jim", "Jimmerson", true,
-            "jim");
-    user.setRoles(Arrays.asList(userRole));
-    userRepository.save(user);
+      if (rundataloader) {
+          roleRepository.save(new Role("USER"));
+          roleRepository.save(new Role("ADMIN"));
 
-    user = new User("admin@admin.com", passwordEncoder.encode("password"),
-            "Admin",
-            "User", true,
-            "admin");
-    user.setRoles(Arrays.asList(adminRole));
-    userRepository.save(user);
+          Role adminRole = roleRepository.findByRole("ADMIN");
+          Role userRole = roleRepository.findByRole("USER");
+
+          User user = new User("jim@jim.com", passwordEncoder.encode("password"), "Jim", "Jimmerson", true,
+                  "jim");
+          user.setRoles(Arrays.asList(userRole));
+          userRepository.save(user);
+
+          user = new User("admin@admin.com", passwordEncoder.encode("password"),
+                  "Admin",
+                  "User", true,
+                  "admin");
+          user.setRoles(Arrays.asList(adminRole));
+          userRepository.save(user);
 
     /*Messaging message= new Messaging("This is the first message ", "semee", "10-12-2018");
     messagingRepository.save(message);
 */
+      }
   }
 
 }
