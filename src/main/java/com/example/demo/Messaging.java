@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -12,10 +11,17 @@ public class Messaging {
     private long id;
 
     @NotNull
-    private String content;
+    private String title;
 
     @NotNull
-    private String sender;
+    private String content;
+
+//    @NotNull
+//    private String sender;
+
+    private String img;
+
+    private  String hashtag;
 
     @NotNull
     private String date;
@@ -28,9 +34,11 @@ public class Messaging {
     public Messaging() {
     }
 
-    public Messaging(String content, String sender, String date) {
+    public Messaging(String title, String content, String img, String hashtag, String date) {
+        this.title=title;
         this.content = content;
-        this.sender = sender;
+        this.img = img;
+        this.hashtag=hashtag;
         this.date = date;
     }
 
@@ -49,14 +57,37 @@ public class Messaging {
     public void setId(long id) {
         this.id = id;
     }
-
-    public String getSender() {
-        return sender;
+    public String getTitle() {
+        return title;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setTitle(String title) {
+        this.title = title;
     }
+
+    public String getHashtag() {
+        return hashtag;
+    }
+
+    public void setHashtag(String hashtag) {
+        this.hashtag = hashtag;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+//    public String getSender() {
+//        return sender;
+//    }
+//
+//    public void setSender(String sender) {
+//        this.sender = sender;
+//    }
 
     public String getContent() {
         return content;

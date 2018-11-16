@@ -19,17 +19,32 @@
         <br />
         <br />
 
-        <form action="#" th:action="@{/addMessage}" th:object="${message}" method="post">
+        <form action="#" th:action="@{/addMessage}" th:object="${message}" enctype="multipart/form-data" method="post">
             <input type="hidden" th:field="*{id}">
 
             <div class="form-group row">
-                <label for="messageInput" class="col-sm-3 col-form-label">&nbsp;<strong>Enter your message: </strong></label>
+                <label for="dateInput" class="col-sm-3 col-form-label">&nbsp;<strong> Title:</strong></label>
+                <div class="col-sm-4">
+                    <input type="text" placeholder="title!" th:field="*{title}"   class="form-control" id="title" name="title" >
+                    <br/><br/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="messageInput" class="col-sm-3 col-form-label">&nbsp;<strong> Content: </strong></label>
                 <div class="col-sm-9">
                     <textarea class="form-control form-group col-sm-6"
                               id="messageInput" rows="3" cols="110"
                               placeholder="Type your message!" th:field="*{content}"name="content"></textarea>
                 </div>
 
+            </div>
+
+            <div class="form-group row">
+                <label for="dateInput" class="col-sm-3 col-form-label">&nbsp;<strong> HashTags:</strong></label>
+                <div class="col-sm-4">
+                    <input type="text" placeholder="hash tags!" th:field="*{hashtag}"   class="form-control" id="hashtag" name="hashtag" >
+                    <br/><br/>
+                </div>
             </div>
 
             <div class="form-group row">
@@ -41,20 +56,26 @@
                 </div>
             </div>
 
+            <!--<div class="form-group row">-->
+                <!--<label for="nameInput" class="col-sm-3 col-form-label">&nbsp;<strong>Message Sent By:</strong></label>-->
+                <!--<div class="col-sm-4">-->
+                    <!--<input type="text" placeholder="Sender!" th:field="*{sender}"   class="form-control" id="nameInput" name="sender" >-->
+                    <!--<br/><br/>-->
+                <!--</div>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
             <div class="form-group row">
-                <label for="nameInput" class="col-sm-3 col-form-label">&nbsp;<strong>Message Sent By:</strong></label>
-                <div class="col-sm-4">
-                    <input type="text" placeholder="Sender!" th:field="*{sender}"   class="form-control" id="nameInput" name="sender" >
-                    <br/><br/>
+                <label for="dateInput" class="col-sm-2 col-form-label"> &nbsp; File : </label>
+                <div class="col-sm-10">
+                    <input type="file" name="file" />
+                    <span th:if="${#fields.hasErrors('img')}" th:errors="*{img}"></span><br />
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-10 text-center">
-                    <td>
-                        <button type="submit" class="btn btn-outline-success text-black" role="button"><strong>Submit</strong></button>
-                        <button type="reset"  class="btn btn-outline-warning text-black" role="button">Reset</button>
-                    </td>
+                    <button type="submit" class="btn btn-outline-success text-black" role="button"><strong>Submit</strong></button>
                 </div>
             </div>
             <br />

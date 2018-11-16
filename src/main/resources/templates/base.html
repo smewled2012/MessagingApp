@@ -17,7 +17,7 @@
 
 <div th:fragment="nav">
     <nav class="navbar navbar navbar-expand-lg navbar-light bg-dark" th:fragment="main-navbar">
-        <a class="navbar-brand text-white active font-weight-bold"  href="/" >&nbsp;&nbsp;Messaging APP</a>
+        <a class="navbar-brand text-white active font-weight-bold"  href="/" >&nbsp;&nbsp;Bullhorn Messaging APP </a> &#9732;
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,10 +34,16 @@
                    <a class="nav-link text-white" href="/logout"> Log out</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item text-light active" th:inline="text">
-                    <a class="nav-link text-white" href="/"> Home </a>
+                    <a class="nav-link text-white" href="/"> People You Follow </a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item text-light active" th:inline="text">
-                    <a class="nav-link text-white" href="/addMessage"> Add a Message </a>
+                    <a class="nav-link text-white" href="/"> My Followers </a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item text-light active" th:inline="text">
+                    <a class="nav-link text-white" href="/addMessage"> Add a New Message </a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item text-light active" th:inline="text">
+                    <a class="nav-link text-white" href="/"> Home </a>
                 </li>
 
                 <li class="nav-item">
@@ -53,6 +59,15 @@
 
                 <li class="nav-item">
                     <a sec:authorize="!isAuthenticated()" class="nav-link text-white" href="/register">Register</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="#">
+                        <em>Welcome <span>s</span>!
+                        </em><br/>
+                        <img class="profile-icon"
+                             src="/image/profile.png"
+                             alt="profile icon"/></a>
                 </li>
 
             </ul>

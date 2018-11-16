@@ -29,6 +29,9 @@ public class User {
   @Column(name = "enabled")
   private boolean enabled;
 
+  @Column(name = "hobby")
+  private String hobby;
+
   @Column(name = "username")
   private String username;
 
@@ -46,13 +49,15 @@ public class User {
     messages=new ArrayList<>();
   }
 
-  public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
+  public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String hobby) {
     this.email = email;
     this.password = password;
+    this.password=password;
     this.firstName = firstName;
     this.lastName = lastName;
     this.enabled = enabled;
     this.username = username;
+    this.hobby = hobby;
   }
 
   public long getId() {
@@ -104,7 +109,15 @@ public class User {
     this.enabled = enabled;
   }
 
-  public String getUsername() {
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public String getUsername() {
     return username;
   }
 

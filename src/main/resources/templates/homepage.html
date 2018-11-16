@@ -22,34 +22,36 @@
 
     <div class="jumbotron text-center">
         <div class="text-center">
-            <h3> List of Messages </h3>
+            <h3> Messages </h3>
         </div>
         <br/>
+
         <table class="table table-borderless table-hover shadow mb-4 bg-white">
-            <tr>
-                <th><strong> Content </strong>&nbsp;&nbsp;</th>
-                <th><strong>Sent By </strong>&nbsp;&nbsp;</th>
-                <th><strong>Date </strong> &nbsp;&nbsp;</th>
-            </tr>
+            <thead>
+            <th><strong>Title </strong></th>
+            <th><strong>Posted By </strong></th>
+            <th><strong>HashTags </strong></th>
+            <th></th>
+            </thead>
 
             <tr th:each="message : ${messages}">
-                <td th:text="${message.content}"></td>
-                <td th:text="${message.sender}"></td>
+
+                <td th:text="${message.title}"></td>
+
                 <td th:text="${message.date}"></td>
 
+                <td th:text="${message.hashtag}"></td>
 
-                <div sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
-                    <td>
-                  <button><a th:href="@{/detail/{id}(id=${message.id})}" class="btn btn-outline-success" role="button"> <strong>Details</strong> </a></button>
-                    </td>
-                </div>
-
-                <div sec:authorize="hasAuthority('ADMIN')">
-                    <td>
-                    <a th:href="@{/delete/{id}(id=${message.id})}" class="btn btn-danger" role="button">
+                <td>
+                    <a th:inline="text" th:href="@{/detail/{id}(id=${message.id})}" class="btn btn-primary" role="button">
+                        <strong>Details</strong> </a>
+                    <span th:if="${user_id==message.user.id}">
+                    <a th:href="@{/update/{id}(id=${message.id})}" th:inline="text" class="btn btn-warning">
+                        <strong>Update</strong> </a>
+                    <a th:href="@{/delete/{id}(id=${message.id})}" th:inline="text" class="btn btn-danger">
                         <strong>Delete</strong> </a>
-                    </td>
-                </div>
+                    </span>
+                </td>
 
             </tr>
 
@@ -58,26 +60,20 @@
         <br/>
         <br/>
 
-        <div class="aligntext-center">
-            <td>
-                <span sec:authorize="!isAuthenticated()" class="nav-link  text-warning ">
-                    <a href="/login"  class="btn btn-outline-success text-color" role="button"><strong>Login</strong></a>
-                    <a href="/register"  class="btn btn-outline-success text-color" role="button" > <strong>Register</strong></a>
-                </span>
-            </td>
-            <td>
-                <span sec:authorize="isAuthenticated()" class="nav-link text-warning" th:inline="text">
-                    <a href="/addMessage"  class="btn btn-success " role="button"><strong>Add Message</strong></a>
-                    <a href="/logout" class="btn btn-outline-success  text-color" role="button"><strong>Log out</strong></a>
-                </span>
+        <!--<div class="aligntext-center">-->
+        <!--<td>-->
+        <!--<span sec:authorize="!isAuthenticated()" class="nav-link  text-warning ">-->
+        <!--<a href="/login"  class="btn btn-outline-success text-color" role="button"><strong>Login</strong></a>-->
+        <!--<a href="/register"  class="btn btn-outline-success text-color" role="button" > <strong>Register</strong></a>-->
+        <!--</span>-->
+        <!--</td>-->
+        <!---->
 
-            </td>
+        <!--</div>-->
 
-        </div>
-
+        <!--</div>-->
     </div>
 </div>
-
 
 
 <div th:replace="base ::  footer"></div>

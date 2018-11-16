@@ -1,50 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Detail Information </title>
-
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
     <th:block th:insert="base :: header"></th:block>
 </head>
-
 <body>
+
 
 <div th:replace="base :: nav"></div>
 
-<div class="container bg-light ">
-    <div class="my-5 "></div>
+<div class="container bg-light align-content-center">
+    <div class="my-4 "></div>
+    <h2 class="text-center">View Message Detail</h2>
 
-    <div class="my-4 py-5" align="center">
+    <div>
+        <strong>Title: </strong>
+        <span><a class="pr-4" th:text="${message.title}"> </a></span><br/>
 
-        <h2 class="text-center py-3">Message Detail</h2>
-
-        <table>
-            <tr class="text-dark">
-                <th class="pr-3">Content</th>
-                <th class="pr-3">Sent By</th>
-                <th class="pr-3">Date</th>
-            </tr>
-            <tr>
-                <td class="pr-4" th:text="${message.content}">  </td>
-                <td class="pr-3" th:text="${message.sender}"> </td>
-                <td class="pr-3" th:text="${message.date}"></td>
-
-            </tr>
-        </table>
-        <br />
-
-        <td>
-            <button class="btn btn-outline-success text-white" role="button"><a href="/"><strong>View All Messages</strong></a></button>
-
-            <div th:if="${user_id==message.user.id ||  sec:authorize="hasAuthority('ADMIN')"}">
-                <button class="btn btn-outline-success text-white" role="button"><a  th:href="@{/update/{id}(id=${message.id})}"> <strong>Edit Post </strong></a></button>
-            </div>
-
-        </td>
     </div>
+
+    <p class="detail-img">
+        <img id="gravatar" th:src="${message.img}" alt="post image"/>
+    </p>
+
+    <p>
+        <strong>Content: </strong>
+        <span><a class="pr-4" th:text="${message.content}"> </a></span></p>
+    <p>
+        <strong>HashTags: </strong>
+        <span><a class="pr-4" th:text="${message.hashtag}"> </a>
+            <!--<a class="btn btn-light"-->
+            <!--href="/getPostsFromTag/15">-->
+            <!--<span>##bootcamp#java</span></a>-->
+                    </span>&nbsp;
+    </p>
+
+    <p>
+        Posted by:
+        <!--<img id="gravatar"-->
+        <!--src="http://gravatar.com/avatar/92eb5ffee6ae2fec3ad71c777531578f?s=20" alt="gravatar"/>-->
+        <strong>
+            <a href="@{/myprofile/{id}(id=${user.id})}">
+                <a class="pr-4" th:text="${message.user.firstName}"> </a>
+            </a>
+        </strong>
+        <span><a class="pr-4" th:text="${message.date}"></a></span>
+    </p>
+
+    <br />
+
+    <p>
+        <span th:if="${user_id==message.user.id}">
+            <a class="btn btn-primary" th:inline="text" th:href="@{/update/{id}(id=${message.id})}">Update</a>
+            <a class="btn btn-danger" th:inline="text" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+        </span>
+    </p>
 </div>
+</div>
+<div class="emptySpace"></div>
+
 
 <div th:replace="base :: footer"></div>
-
 </body>
 </html>
