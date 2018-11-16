@@ -43,7 +43,7 @@
                 <td th:text="${message.hashtag}"></td>
 
                 <td>
-                    <a th:inline="text" th:href="@{/detail/{id}(id=${message.id})}" class="btn btn-primary" role="button">
+                    <a th:href="@{/detail/{id}(id=${message.id})}" th:inline="text" class="btn btn-success" >
                         <strong>Details</strong> </a>
                     <span th:if="${user_id==message.user.id}">
                     <a th:href="@{/update/{id}(id=${message.id})}" th:inline="text" class="btn btn-warning">

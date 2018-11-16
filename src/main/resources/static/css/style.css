@@ -27,6 +27,11 @@ p{
    font-family: Algerian;
 }
 
+#gravatar{
+    width: 100px;
+    height: 100px;
+}
+
 .emptySpace{
     height: 100px;
 }

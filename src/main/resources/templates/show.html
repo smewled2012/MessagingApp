@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><head>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
 
-
 <div th:replace="base :: nav"></div>
+
 
 <div class="container bg-light align-content-center">
     <div class="my-4 "></div>
     <h2 class="text-center">View Message Detail</h2>
-
     <div>
         <strong>Title: </strong>
         <span><a class="pr-4" th:text="${message.title}"> </a></span><br/>
@@ -27,6 +28,10 @@
         <strong>Content: </strong>
         <span><a class="pr-4" th:text="${message.content}"> </a></span></p>
     <p>
+    <p>
+        <strong>Hobbies: </strong>
+        <span><a class="pr-4" th:text="${message.user.hobby}"> </a></span></p>
+    <p>
         <strong>HashTags: </strong>
         <span><a class="pr-4" th:text="${message.hashtag}"> </a>
             <!--<a class="btn btn-light"-->
@@ -37,29 +42,22 @@
 
     <p>
         Posted by:
-        <!--<img id="gravatar"-->
-        <!--src="http://gravatar.com/avatar/92eb5ffee6ae2fec3ad71c777531578f?s=20" alt="gravatar"/>-->
         <strong>
-            <a href="@{/myprofile/{id}(id=${user.id})}">
-                <a class="pr-4" th:text="${message.user.firstName}"> </a>
+            <a href="@{/myprofile/{id}(id=${user.id})}">[[${message.user.firstName}]]
+                <!--<a class="pr-4" th:text="${message.user.firstName}"> </a>-->
             </a>
         </strong>
         <span><a class="pr-4" th:text="${message.date}"></a></span>
     </p>
 
-    <br />
-
-    <p>
-        <span th:if="${user_id==message.user.id}">
-            <a class="btn btn-primary" th:inline="text" th:href="@{/update/{id}(id=${message.id})}">Update</a>
-            <a class="btn btn-danger" th:inline="text" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
-        </span>
-    </p>
+    <br/>
 </div>
 </div>
 <div class="emptySpace"></div>
-
-
 <div th:replace="base :: footer"></div>
+
+
 </body>
 </html>
+
+

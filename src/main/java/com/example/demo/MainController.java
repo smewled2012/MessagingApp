@@ -121,12 +121,12 @@ public class MainController {
     @RequestMapping("/detail/{id}")
     public String showCourse(@PathVariable("id") long id, Model model){
 
-        model.addAttribute("message",messagingRepository.findById(id));
-        model.addAttribute("user",userRepository.findById(id).get());
+        model.addAttribute("message",messagingRepository.findById(id).get());
+        model.addAttribute("user",userRepository.findById(id));
 
-        if(userService.getUser()!=null){
-            model.addAttribute("user_id",userService.getUser().getId());
-        }
+//        if(userService.getUser()!=null){
+////            model.addAttribute("user_id",userService.getUser().getId());
+////
         return "show";
     }
 

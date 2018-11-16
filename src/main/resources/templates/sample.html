@@ -18,6 +18,23 @@
 </body>
 </html>
 
+<!--<div class="container">-->
+    <!--<div class="jumbotron">-->
+        <!--<div >-->
+            <!--<h1> View Message Details</h1>-->
+        <!--</div>-->
+        <!--<a href="/">Show All messages </a> <br />-->
+
+        <!--Title: <span th:text="${message.title}" ></span> <br />-->
+        <!--Content: <span th:text="${message.content}" ></span> <br />-->
+        <!--Date: <span th:text="${message.date}" ></span> <br />-->
+
+
+    <!--</div>-->
+<!--</div>-->
+<!--<div th:replace="base :: footer"></div>-->
+
+
 
 <!--<div>-->
 <!--<h3 th:inline="text"><strong>Title: </strong> [[${message.title}]]</h3>-->
@@ -43,3 +60,37 @@
 
 
 <!--</div>-->
+
+<!--<div>-->
+<!--<strong>Title: </strong>-->
+<!--<span><a class="pr-4" th:text="${message.title}"> </a></span><br/>-->
+<!--</div>-->
+
+<!--<p class="detail-img">-->
+<!--<img id="gravatar" th:src="${message.img}" alt="post image"/>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--<strong>Content: </strong>-->
+<!--<span><a class="pr-4" th:text="${message.content}"> </a></span>-->
+<!--</p>-->
+<!--<p>-->
+<!--<strong>HashTags: </strong>-->
+<!--<span><a class="pr-4" th:text="${message.hashtag}"> </a>-->
+<!--&lt;!&ndash;<a class="btn btn-light"&ndash;&gt;-->
+<!--&lt;!&ndash;href="/getPostsFromTag/15">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>##bootcamp#java</span></a>&ndash;&gt;-->
+<!--</span>&nbsp;-->
+<!--</p>-->
+
+<!--<p>-->
+<!--Posted by:-->
+<!--&lt;!&ndash;<img id="gravatar"&ndash;&gt;-->
+<!--&lt;!&ndash;src="http://gravatar.com/avatar/92eb5ffee6ae2fec3ad71c777531578f?s=20" alt="gravatar"/>&ndash;&gt;-->
+<!--<strong>-->
+<!--<a href="@{/myprofile/{id}(id=${message.id})}">-->
+<!--<a class="pr-4" th:text="${message.content}"> </a>-->
+<!--</a>-->
+<!--</strong>-->
+<!--<span><a class="pr-4" th:text="${message.date}"></a></span>-->
+<!--</p>-->
