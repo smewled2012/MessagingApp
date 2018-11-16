@@ -38,12 +38,14 @@
 
                 <td th:text="${message.title}"></td>
 
-                <td th:text="${message.date}"></td>
+                <td >
+                <a href="@{/myprofile/{id}(id=${user.id})}">[[${message.user.firstName}]] </a>
+                    <span><a class="pr-4" th:text="${message.date}"></a> </span> </td>
 
                 <td th:text="${message.hashtag}"></td>
 
                 <td>
-                    <a th:href="@{/detail/{id}(id=${message.id})}" th:inline="text" class="btn btn-success" >
+                    <a th:href="@{/detail/{id}(id=${message.id})}" th:inline="text" class="btn btn-success">
                         <strong>Details</strong> </a>
                     <span th:if="${user_id==message.user.id}">
                     <a th:href="@{/update/{id}(id=${message.id})}" th:inline="text" class="btn btn-warning">

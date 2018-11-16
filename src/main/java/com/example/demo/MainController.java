@@ -32,6 +32,7 @@ public class MainController {
 
         model.addAttribute("messages",messagingRepository.findAll());
 
+
         if(userService.getUser()!=null){
 
             model.addAttribute("user_id",userService.getUser().getId());
@@ -112,7 +113,7 @@ public class MainController {
     public String findProfile(@PathVariable("id") long id, Model model){
 
         model.addAttribute("user", userRepository.findById(id).get());
-        model.addAttribute("user",userRepository.findById(id).get());
+
 
         return "profileform";
     }
